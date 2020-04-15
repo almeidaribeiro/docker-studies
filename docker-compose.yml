@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+  pandora:
+    build: .
+    ports: 
+      - "3000:3000"
+    environment:
+      - PORT=3000
