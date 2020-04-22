@@ -15,6 +15,13 @@ docker run -p 3000:3000 --name cool-pandora pandora
 docker ps 
 
 # matar container
-docker kill 
+docker kill
+
+# sobe serviço apollo em background (-d), isso sobe o container docker-project_apollo_1
+docker-compose up -d apollo
+
+# roda psql no container docker-project_apollo_1
+# em termos práticos, esse comando acessa o postegres
+docker exec -it docker-project_apollo_1 psql -U pacoca
 
 ``` 

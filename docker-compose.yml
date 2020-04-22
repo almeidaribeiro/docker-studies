@@ -7,3 +7,21 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+    depends_on: 
+      apollo:
+        condition: service_healthy
+    links:
+      - apollo
+      
+  apollo:
+    image: postgres:9.6-alpine
+    ports:
+      - 5432
+    environment:
+      - POSTGRES_USER=pacoca
+      - POSTGRES_PASSWORD=ebom
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U pacoca"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
