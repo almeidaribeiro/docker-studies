@@ -12,6 +12,9 @@ services:
         condition: service_healthy
     links:
       - apollo
+    volumes:
+      - .:/feijuca
+      - /feijuca/node_modules
       
   apollo:
     image: postgres:9.6-alpine
